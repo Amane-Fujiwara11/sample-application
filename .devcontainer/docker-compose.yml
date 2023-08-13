@@ -1,0 +1,68 @@
+version: "3"
+services:
+  # PostgreSQL
+  postgresql:
+    container_name: postgresql
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d
+      - postgres-data:/var/lib/postgresql/pgdata
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+  # pgAdmin4
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:latest
+    restart: always
+    ports:
+      - "8888:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@example.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    depends_on:
+      - postgresql
+
+  # LocalStack
+  localstack:
+    image: localstack/localstack:1.3.1
+    ports:
+      - "4566:4566"
+      - "9080:8080"
+    environment:
+      - DEBUG=${DEBUG-}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      # - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      # - "/var/run/docker.sock:/var/run/docker.sock"
+      - localstack-data:/var/lib/pgadmin
+
+  app_dev:
+    container_name: sample_app
+    restart: always
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ../:/java/src/work
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+    name: postgres-data
+    external: true
+  pgadmin-data:
+    name: pgadmin-data
+    external: true
+  localstack-data:
+    name: localstack-data
+    external: true
