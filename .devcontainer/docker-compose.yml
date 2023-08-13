@@ -43,10 +43,11 @@ services:
       - localstack-data:/var/lib/pgadmin
 
   app_dev:
+    image: amazoncorretto:17
     container_name: sample_app
     restart: always
-    build:
-      dockerfile: ./Dockerfile
+    #build:
+    #  dockerfile: ./Dockerfile
     ports:
       - "8080:8080"
     tty: true
@@ -54,15 +55,15 @@ services:
     volumes:
       - ../:/java/src/work
     depends_on:
-      - postgres
+      - postgresql
 
 volumes:
   postgres-data:
     name: postgres-data
-    external: true
+    #external: true
   pgadmin-data:
     name: pgadmin-data
-    external: true
+    #external: true
   localstack-data:
     name: localstack-data
-    external: true
+    #external: true

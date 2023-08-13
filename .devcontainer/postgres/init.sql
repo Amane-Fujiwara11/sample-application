@@ -7,4 +7,4 @@ CREATE TABLE sample_schema.ankens (
     CONSTRAINT anken_name_unique UNIQUE (anken_name)
 );
 
-INSERT INTO sample_schema.ankens(anken_number, anken_name) VALUES ('999', 'TEST');
+INSERT INTO sample_schema.ankens(anken_number, anken_name) VALUES ('9999', 'TEST');
