@@ -1,0 +1,14 @@
+target
+/.factorypath
+cicd
+# .classpath、.project要らない(pullした人の環境壊しそう)
+/.classpath
+/.project
+# .classpath、.project要らない(gradleに移行したため、mavenの設定がいらない)
+/pom.xml
+/.springBeans
+/.settings
+/.gradle
+build/
+bin/
+HELP.md

@@ -2,7 +2,7 @@
     "name": "Backend Sample(java)",
     "dockerComposeFile":["docker-compose.yml"],
     "service": "app_dev",
-    "workspaceFolder": "/java/src/work",
+    "workspaceFolder": "/java/work/project",
     "overrideCommand": true,
     "portsAttributes": {
         "8080:8080": {
@@ -24,7 +24,8 @@
 				"hediet.vscode-drawio",
 				"donjayamanne.githistory",
 				"johnpapa.vscode-peacock",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+                "vscjava.vscode-gradle"
 			],
             "settings": {
                 "java.javapath": "/java",

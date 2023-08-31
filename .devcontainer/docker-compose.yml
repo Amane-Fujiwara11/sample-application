@@ -46,14 +46,13 @@ services:
     image: amazoncorretto:17
     container_name: sample_app
     restart: always
-    #build:
-    #  dockerfile: ./Dockerfile
+    build: ./
     ports:
       - "8080:8080"
     tty: true
     stdin_open: true
     volumes:
-      - ../:/java/src/work
+      - ../app:/java/work/project/
     depends_on:
       - postgresql
 
