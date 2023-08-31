@@ -12,3 +12,4 @@ cicd
 build/
 bin/
 HELP.md
+.DS_Store
