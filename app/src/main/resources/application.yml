@@ -1,0 +1,31 @@
+api:
+  base-path: /api/v1/sample
+
+server:
+  shutdown: graceful
+
+  error.whitelabel.enabled: false
+  servlet.jsp.registered: false
+  ssl.enabled: false
+
+  tomcat:
+    keep-alive-timeout: 6500
+    basedir: /tmp/springboot
+
+    accept-count: 1000
+    conection-timeout: 5000
+    max-http-form-post-size: 2MB
+    max-swallow-size: -1
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DATABASE:root}
+    username: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD:root}
+    hikari:
+      auto-commit: false
+      pool-name: ConnectionPool
+      maximum-pool-size: ${DBMS_POOL_SIZE:10}
+
+  sql:
+    init.mode: always
