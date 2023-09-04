@@ -2,7 +2,7 @@
     "name": "Backend Sample(java)",
     "dockerComposeFile":["docker-compose.yml"],
     "service": "app_dev",
-    "workspaceFolder": "/java/work/project",
+    "workspaceFolder": "/java/work/project/",
     "overrideCommand": true,
     "portsAttributes": {
         "8080:8080": {
