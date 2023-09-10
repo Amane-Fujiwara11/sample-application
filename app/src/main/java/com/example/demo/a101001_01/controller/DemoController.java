@@ -1,7 +1,9 @@
 package com.example.demo.a101001_01.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.a101001_01.common.DemoConstants;
 import com.example.demo.a101001_01.dto.ReceiveMessageDto;
 import com.example.demo.a101001_01.service.I_DemoService;
@@ -10,7 +12,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 
-@Controller
+@RestController
+@RequestMapping("${api.base-path}")
 @Log4j2
 public class DemoController {
 
@@ -25,6 +28,7 @@ public class DemoController {
 	 * @throws JsonProcessingException JSONの処理に失敗した場合
 	 * @throws JsonMappingException JSONのマッピングに失敗した場合
 	 */
+	@RequestMapping(method = RequestMethod.POST)
 	public void receiveMessage(String jsonMessage)
 			throws JsonProcessingException, JsonMappingException {
 
